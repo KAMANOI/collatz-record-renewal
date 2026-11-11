@@ -108,3 +108,6 @@ This paper is part of a series on Collatz dynamics:
 Hiroki Kamanoi
 hirokikamanoi@gmail.com
 2026
+
+---
+Related research and services by HDR (Human Driven Reality): https://hdr-ai.com/#research

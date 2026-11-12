@@ -8,6 +8,20 @@ Completes the two-gate jump framework for Collatz synchronization records and cl
 
 ---
 
+## Erratum (2026-11-12)
+
+**Theorem SR is withdrawn.** The claim "after a height-K >= 4 jump, the immediately subsequent jump has height < K" is false.
+
+- Gate-1 counterexample: 1643 -> 2465 -> 1849 -> 1387 -> 2081 (a_t = 1, 5, 3, 1, 5).
+- Gate-2 counterexample: 267 -> 401 -> 301 -> 113 (a_t = 1, 4, 2, 4).
+- Source of the error: after a jump the odd core is q' = (3q + 1) / 2^K, not a power of 3 times the pre-jump core, so the cascade endpoint is not fixed by the record condition (see the erratum of Paper H).
+- Theorem UPI is formulated on the same cascade-endpoint residue. Its proof is not in this repository and it should be treated as unverified.
+- Unaffected: Theorem JE, Theorem JE2 and Theorem OC (q -> 3q inside a cascade, i.e. for steps with a_t >= 3).
+
+The PDF in `paper/` is the original, uncorrected version.
+
+---
+
 ## Overview
 
 Establishes jump formulas for both gate-1 and gate-2 renewal events, and identifies the precise boundary between local (cascade-level) and global (record-to-record) obstructions. The central open question is whether the inter-record transformation mixes residue classes effectively enough to prevent an infinite increasing chain of height records.
@@ -16,7 +30,7 @@ The central results are:
 
 - **Theorem JE2** (Jump from Gate 2): At a semi-renewal event with nₜ = 1 + 4qₜ, the next value is T(nₜ) = (3qₜ+1)/2^s and height K is achieved iff qₜ ≡ r_{K,s} (mod 2^{K+s})
 - **Theorem OC** (Cascade transport exact): If aₜ = k ≥ 3, then aₜ₊ⱼ = k − 2j and qₜ₊ⱼ = 3^j qₜ
-- **Theorem SR** (Paper I): After a height-K ≥ 4 jump, the immediately subsequent jump has height < K
+- **Theorem SR** (Paper I): ~~After a height-K ≥ 4 jump, the immediately subsequent jump has height < K~~ — withdrawn, see Erratum
 - **Theorem JE** (Gate 1): Complete jump formula from gate-1 renewal events
 
 ---
@@ -29,9 +43,9 @@ The central results are:
 |--------|--------|--------|
 | Theorem JE2: gate-2 jump formula | 2-adic valuation | ✓ proved |
 | Theorem OC: exact cascade transport law | Direct computation | ✓ proved |
-| Theorem SR: immediate post-cascade height strictly less | Cascade algebra | ✓ proved |
+| Theorem SR: immediate post-cascade height strictly less | Cascade algebra | ✗ withdrawn — false, see Erratum |
 | Theorem JE: gate-1 jump formula | Congruence | ✓ proved |
-| Theorem UPI (Paper M): phase graph cannot return to 0 (mod 2^{K-2}) within cascade | Phase graph | ✓ proved |
+| Theorem UPI (Paper M): phase graph cannot return to 0 (mod 2^{K-2}) within cascade | Phase graph | unverified, see Erratum |
 
 ---
 
